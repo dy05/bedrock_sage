@@ -33,8 +33,10 @@ export default async (app) => {
    * @see {@link https://bud.js.org/reference/bud.watch}
    */
   app
-    .setUrl('http://test.obbydev.com')
-    .setProxyUrl('http://test.obbydev.com')
+    // .setUrl('https://test.obbydev.com')
+    // .setProxyUrl('https://test.obbydev.com')
+    .setUrl('http://localhost:3000')
+    .setProxyUrl('http://localhost:3000')
 //    .setUrl('http://localhost:3000')
 //    .setProxyUrl('http://example.test')
     .watch(['resources/views', 'app']);
@@ -47,36 +49,36 @@ export default async (app) => {
    * @see {@link https://bud.js.org/extensions/sage/theme.json}
    * @see {@link https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-json}
    */
-  app.wpjson
-    .setSettings({
-      background: {
-        backgroundImage: true,
-      },
-      color: {
-        custom: false,
-        customDuotone: false,
-        customGradient: false,
-        defaultDuotone: false,
-        defaultGradients: false,
-        defaultPalette: false,
-        duotone: [],
-      },
-      custom: {
-        spacing: {},
-        typography: {
-          'font-size': {},
-          'line-height': {},
-        },
-      },
-      spacing: {
-        padding: true,
-        units: ['px', '%', 'em', 'rem', 'vw', 'vh'],
-      },
-      typography: {
-        customFontSize: false,
-      },
-    })
-    .useTailwindColors()
-    .useTailwindFontFamily()
-    .useTailwindFontSize();
+  // app.wpjson
+    // .setSettings({
+    //   background: {
+    //     backgroundImage: true,
+    //   },
+    //   color: {
+    //     custom: false,
+    //     customDuotone: false,
+    //     customGradient: false,
+    //     defaultDuotone: false,
+    //     defaultGradients: false,
+    //     defaultPalette: false,
+    //     duotone: [],
+    //   },
+    //   custom: {
+    //     spacing: {},
+    //     typography: {
+    //       'font-size': {},
+    //       'line-height': {},
+    //     },
+    //   },
+    //   spacing: {
+    //     padding: true,
+    //     units: ['px', '%', 'em', 'rem', 'vw', 'vh'],
+    //   },
+    //   typography: {
+    //     customFontSize: false,
+    //   },
+    // })
+    // .useTailwindColors()
+    // .useTailwindFontFamily()
+    // .useTailwindFontSize();
 };
