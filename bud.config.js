@@ -14,9 +14,9 @@ export default async (app) => {
    * @see {@link https://bud.js.org/reference/bud.assets}
    */
   app
-    .entry('app', ['@scripts/app', '@styles/app'])
-    .entry('editor', ['@scripts/editor', '@styles/editor'])
-    .assets(['images']);
+    .entry('app', ['@scripts/app', '@styles/app.scss'])
+    .entry('editor', ['@scripts/editor', '@styles/editor.scss'])
+    .assets(['images', 'fonts']);
 
   /**
    * Set public path
@@ -35,8 +35,8 @@ export default async (app) => {
   app
     // .setUrl('https://test.obbydev.com')
     // .setProxyUrl('https://test.obbydev.com')
-    .setUrl('http://localhost:3000')
-    .setProxyUrl('http://localhost:3000')
+    .setUrl('http://localhost:4000')
+    .setProxyUrl('http://localhost:4000')
 //    .setUrl('http://localhost:3000')
 //    .setProxyUrl('http://example.test')
     .watch(['resources/views', 'app']);

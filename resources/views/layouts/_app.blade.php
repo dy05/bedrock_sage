@@ -1,6 +1,3 @@
-@php
-$active_page = $active_page ?? null;
-@endphp
 <!doctype html>
 <html @php(language_attributes())>
   <head>
@@ -18,17 +15,17 @@ $active_page = $active_page ?? null;
         {{ __('Skip to content') }}
       </a>
 
-      @include('sections.header', ['active_page' => $active_page])
+      @include('sections.header')
 
       <main id="main" class="main">
         @yield('content')
       </main>
 
-{{--      @hasSection('sidebar')--}}
-{{--        <aside class="sidebar">--}}
-{{--          @yield('sidebar')--}}
-{{--        </aside>--}}
-{{--      @endif--}}
+      @hasSection('sidebar')
+        <aside class="sidebar">
+          @yield('sidebar')
+        </aside>
+      @endif
 
       @include('sections.footer')
     </div>
