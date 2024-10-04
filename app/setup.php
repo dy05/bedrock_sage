@@ -147,6 +147,8 @@ rest_api_init('rest_api_init',  function () {
     remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
 });
 
+add_filter( 'wp_mail_content_type', function () { return "text/html"; } );
+
 //
 //use Illuminate\Support\Facades\Log;
 //

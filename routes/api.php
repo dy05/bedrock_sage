@@ -11,28 +11,29 @@ function sendCustomerMail(string $to, string $subject) {
     wp_mail($to, $subject, $content);
 }
 
-Route::post('/contact', function ($request) {
+Route::post('/contact', function () {
 
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        return new \WP_Error('invalid_request', 'Invalid request', ['status' => 500]);
-    }
+//    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+//        return new \WP_Error('invalid_request', 'Invalid request', ['status' => 500]);
+//    }
+//
+//    $name = $request->get_param('lastname');
+//    $email = $request->get_param('email');
+//    $message = $request->get_param('message');
+//
+//    if (! $name || ! $email || ! $message) {
+//        return new \WP_Error('invalid_request', 'Invalid request', ['status' => 500]);
+//    }
+//
+//    wp_mail(
+//        'hello@example.com',
+//        'Contact Form Submission from '.$name,
+//        "Name: $name\n\nEmail: $email\n\nMessage:\n$message",
+//        ['From: '.get_option('name').' <noreply@'.$_SERVER['HTTP_HOST'].'>']
+//    );
+//
+//    return new \WP_REST_Response(['status' => 'ok'], 200);
 
-    $name = $request->get_param('lastname');
-    $email = $request->get_param('email');
-    $message = $request->get_param('message');
-
-    if (! $name || ! $email || ! $message) {
-        return new \WP_Error('invalid_request', 'Invalid request', ['status' => 500]);
-    }
-
-    wp_mail(
-        'hello@example.com',
-        'Contact Form Submission from '.$name,
-        "Name: $name\n\nEmail: $email\n\nMessage:\n$message",
-        ['From: '.get_option('name').' <noreply@'.$_SERVER['HTTP_HOST'].'>']
-    );
-
-    return new \WP_REST_Response(['status' => 'ok'], 200);
 //    $data = $request->get_params();
 //    var_dump($data);
 //    Validator::make($data, [
@@ -61,7 +62,7 @@ Route::post('/contact', function ($request) {
         'Test Email',
         'This is a test email from WordPress.'
     );
-    var_dump($mail);
+//    var_dump($mail);
 //    var_dump($errors);
     return response()->json([
         'message' => 'Message sent.',

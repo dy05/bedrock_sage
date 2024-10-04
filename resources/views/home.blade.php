@@ -106,7 +106,7 @@
       </div>
     </div>
     <div class="mt-8 md:mt-0 md:col-span-6 md:col-start-7">
-      <form id="contact-form">
+      <form id="contact-form" method="POST">
         <div class="md:grid">
           <x-input name="firstname" placeholder="Dupond" label="Nom" class="md:col-span-6" />
           <x-input name="lastname" placeholder="" label="Prénom" class="md:col-span-6" />
@@ -212,7 +212,7 @@
           return response.json()
         })
         .then((data) => {
-          console.log('Success:', data)
+          alert('Message envoyé avec succès!');
           e.target.reset();
         })
         .catch((error) => {
