@@ -150,7 +150,7 @@
     <h2 class="uppercase text-sm text-secondary">
       Nisi nec velit
     </h2>
-    <p class="text-lg font-light leading-3">
+    <p class="text-xl font-light leading-3">
       Nullam pulvinar felis at metus malesuada
     </p>
     <p>
@@ -170,7 +170,7 @@
     <h2 class="uppercase text-sm text-secondary">
       Bibendum curabitur magna
     </h2>
-    <p class="text-lg font-light leading-3">
+    <p class="text-xl font-light leading-3">
       Aenean sed nibh a magna posuere
     </p>
     <div>
@@ -203,7 +203,7 @@
     <h2 class="uppercase text-sm text-secondary">
       Massa metus proin
     </h2>
-    <p class="text-lg font-light leading-3">
+    <p class="text-xl font-light leading-3">
       Dolor imperdiet
     </p>
     <p>

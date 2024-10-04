@@ -70,14 +70,14 @@
     </div>
     <div>
       <div class="flex gap-2 w-full overflow-x-auto">
-        @foreach(['img-slide1.png', 'img-slide2.png', 'img-slide3.png', 'img-slide4.png', ] as $image)
-        <div>
-          @php
-            $asset = \Roots\asset('images/' . $image);
-          @endphp
-          <img src="{{ $asset->uri() }}" alt="image" class="slide-img object-cover" />
-        </div>
-        @endforeach
+        <x-card text="Duis porta ligula rhoncus euismod pretium"
+                :link="\Roots\asset('images/img-slide1.png')" />
+        <x-card text="Etiam aliquet congue consequat"
+                :link="\Roots\asset('images/img-slide2.png')" />
+        <x-card text="Maecenas a venenatis enim"
+                :link="\Roots\asset('images/img-slide3.png')" />
+        <x-card text="Sed a magna semper, porta purus eu, ullamcorper ligula"
+                :link="\Roots\asset('images/img-slide4.png')" />
       </div>
       <div class="mt-4 flex gap-2">
         <button type="button" class="slide-button cursor-pointer text-gray opacity-40">
