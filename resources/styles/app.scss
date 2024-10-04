@@ -265,6 +265,10 @@ a {
   background-color: var(--gray-color, #DDDDDD) !important;
 }
 
+.text-danger {
+  color: var(--error-color, #F44D2F);
+}
+
 .text-gray {
   color: var(--gray-color, #DDDDDD);
 }

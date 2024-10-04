@@ -216,8 +216,14 @@
           e.target.reset();
         })
         .catch((error) => {
-          console.log('error')
-          console.log(error)
+          let _errorMessage = document.createElement('div');
+          _errorMessage.setAttribute('id', 'alert');
+          _errorMessage.classList.add('mt-4');
+          _errorMessage.classList.add('text-danger');
+          _errorMessage.textContent = 'Erreur lors de l\'envoi du message. Veuillez réessayer plus tard.';
+          e.target.appendChild(_errorMessage)
+          // console.log('error')
+          // console.log(error)
           // console.error('Error:', error)
         });
     }
