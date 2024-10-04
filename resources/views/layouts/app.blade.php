@@ -20,15 +20,9 @@ $active_page = $active_page ?? null;
 
       @include('sections.header', ['active_page' => $active_page])
 
-      <main id="main" class="main">
+      <main id="main" class="main md:max-screen">
         @yield('content')
       </main>
-
-{{--      @hasSection('sidebar')--}}
-{{--        <aside class="sidebar">--}}
-{{--          @yield('sidebar')--}}
-{{--        </aside>--}}
-{{--      @endif--}}
 
       @include('sections.footer')
     </div>

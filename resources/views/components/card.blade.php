@@ -4,8 +4,8 @@
 ])
 
 <div>
-  <div class="slide-div bg-gray pb-4">
-    <img src="{{ $link }}" alt="image" class="slide-img object-cover" />
+  <div class="slide-div">
+    <img src="{{ $link }}" alt="image" class="slide-img object-cover -mb-2" />
     <div class="slide-text grid absolute w-full p-4 bottom-0 text-white cursor-pointer">
       <span class="col-span-9 text-md md:text-lg font-bold">
         {{ $text }}

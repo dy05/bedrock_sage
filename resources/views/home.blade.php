@@ -19,13 +19,13 @@
         @php
           $asset = \Roots\asset('images/img.png');
         @endphp
-        <img src="{{ $asset->uri() }}" alt="image" class="image-387 object-cover" />
+        <img src="{{ $asset->uri() }}" alt="image" class="image-387 object-cover fade-in" />
       </div>
     </div>
   </section>
 
-  <section class="mt-[100px]">
-    <div>
+  <section class="mt-[100px] md:grid">
+    <div class="md:col-span-4">
       <x-title text="Bibendum curabitur magna" />
       <x-subtitle text="Aenean sed nibh a magna posuere" />
       <div>
@@ -48,18 +48,18 @@
         <x-link />
       </div>
     </div>
-    <div class="mt-16">
-      <div class="bg-section2">
+    <div class="mt-16 md:mt-0 md:col-span-6">
+      <div class="bg-section2 fade-in">
         @php
           $asset = \Roots\asset('images/img-section2.png');
         @endphp
-        <img src="{{ $asset->uri() }}" alt="image" class="image-599 object-cover -ml-2" />
+        <img src="{{ $asset->uri() }}" alt="image" class="image-599 object-cover -ml-2 fade-in-x" />
       </div>
     </div>
   </section>
 
-  <section class="mt-[100px]">
-    <div>
+  <section class="mt-[160px] md:max-screen-overflow">
+    <div class="md:mx-[10vw]">
       <x-title text="Massa metus proin" />
       <x-subtitle text="Dolor imperdiet" />
       <div>
@@ -69,7 +69,7 @@
       </div>
     </div>
     <div>
-      <div class="flex gap-2 w-full overflow-x-auto">
+      <div class="flex gap-2 w-full overflow-x-scroller md:pl-[10vw]">
         <x-card text="Duis porta ligula rhoncus euismod pretium"
                 :link="\Roots\asset('images/img-slide1.png')" />
         <x-card text="Etiam aliquet congue consequat"
@@ -79,7 +79,8 @@
         <x-card text="Sed a magna semper, porta purus eu, ullamcorper ligula"
                 :link="\Roots\asset('images/img-slide4.png')" />
       </div>
-      <div class="mt-4 flex gap-2">
+
+      <div class="mt-4 flex gap-2 md:hidden">
         <button type="button" class="slide-button cursor-pointer text-gray opacity-40">
           <svg id="arrow-right-icon" class="icon reverse-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
             <path id="Path_224" data-name="Path 224" d="M25.231,15.176a1.337,1.337,0,0,0-.289-1.453L15.609,4.391a1.333,1.333,0,0,0-1.885,1.885l7.057,7.057H5.333a1.333,1.333,0,1,0,0,2.667H20.781l-7.057,7.057a1.333,1.333,0,1,0,1.885,1.885l9.332-9.332A1.334,1.334,0,0,0,25.231,15.176Z" transform="translate(1.333 1.333)" fill="current"/>
@@ -130,9 +131,9 @@
                     id="message" required></textarea>
         </div>
 
-        <div class="grid gap-2 p-0 my-4">
-          <input type="checkbox" name="checkbox" class="p-0 m-0" required />
-          <label for="checkbox" class="col-span-11">
+        <div class="grid-checkbox my-4">
+          <input type="checkbox" name="checkbox" id="checkbox" required />
+          <label for="checkbox" class="ml-2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis risus mi. Ut placerat quam lectus. Curabitur dictum velit non lacus ornare tempor.
           </label>
         </div>
