@@ -122,3 +122,79 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+add_action('wp_loaded', function() {
+    app('session')->isStarted() || app('session')->start();
+});
+
+add_action('init', function () {
+    if (env('WP_ENV') !== 'development') :
+        return;
+    endif;
+
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
+    header('Access-Control-Allow-Credentials: true');
+}, 1);
+
+add_action('init', function () {
+    add_filter('inrage/mail-content', function ($layout, $args) {
+        return view($layout, $args)->render();
+    }, 10, 2);
+});
+
+rest_api_init('rest_api_init',  function () {
+    remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+});
+
+//
+//use Illuminate\Support\Facades\Log;
+//
+//add_action('wp_mail_failed', function ($wp_error) {
+//    $error_data = print_r($wp_error->get_error_data(), true);
+//    $error_message = $wp_error->get_error_message();
+//    Log::debug("Mail failed to send. Error: $error_message, Data: $error_data");
+//});
+//
+//
+//add_filter('phpmailer_init', function ($mail) {
+//    $mail->isSMTP();
+//
+//    $mail->SMTPAuth = true;
+//    $mail->Host = env('WP_ENV') === 'development' ? 'localhost' : env('WP_SMTP_HOST');
+//    $mail->Port = env('WP_ENV') === 'development' ? 1025 : 587;
+//    $mail->Username = env('WP_SMTP_USERNAME');
+//    $mail->Password = env('WP_SMTP_PASSWORD');
+//    $mail->Timeout = 10;
+//
+//    $mail->setFrom(
+//        env('WP_SMTP_FORCEFROM'),
+//        env('WP_SMTP_FORCEFROMNAME')
+//    );
+//});
+//
+//function use_smtp_for_email_delivery( $phpmailer ) {
+//    $phpmailer->isSMTP();
+//    $phpmailer->Host = 'localhost';
+//    $phpmailer->SMTPAuth = false;
+//    $phpmailer->Port = 1025;
+//    $phpmailer->Username = '';
+//    $phpmailer->Password = '';
+//    $phpmailer->SMTPSecure = 'tls';
+//    $phpmailer->From = 'dyos@gmail.com';
+//    $phpmailer->FromName = 'SMTP_NAME';
+//}
+//
+//add_action('phpmailer_init', 'use_smtp_for_email_delivery');
+////add_action('phpmailer_init', 'use_smtp_for_email_delivery');
+//
+////function use_smtp_for_email_delivery($phpmailer) {
+////    $phpmailer->isSMTP();
+////    $phpmailer->Host = 'localhost';
+////    $phpmailer->Port = 1025;
+////    $phpmailer->SMTPAuth = false;
+////    $phpmailer->Username = null;
+////    $phpmailer->Password = null;
+////    echo 'loll';
+////}
+//

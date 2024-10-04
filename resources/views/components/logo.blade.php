@@ -1,3 +1,4 @@
+{{--
 <svg xmlns="http://www.w3.org/2000/svg" class="img-logo" viewBox="0 0 282.039 50">
   <g id="Logo" transform="translate(-39.046 -37.047)">
     <g id="Group_339" data-name="Group 339" transform="translate(39.046 37.047)">
@@ -38,3 +39,10 @@
     </g>
   </g>
 </svg>
+--}}
+
+
+@php
+  $asset = \Roots\asset('images/logo.png');
+@endphp
+<img src="{{ $asset->uri() }}" alt="image" class="logo object-cover" />

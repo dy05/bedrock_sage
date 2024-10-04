@@ -1,8 +1,8 @@
 @extends('layouts.app', ['active_page' => 'home'])
 
 @section('content')
-  <section id="section-1" class="mt-[100px]">
-    <div class="">
+  <section id="section-1" class="mt-[100px] md:grid">
+    <div class="md:col-span-7">
       <x-title text="Nisi nec velit" />
       <x-subtitle text="Nullam pulvinar felis at metus malesuada" />
       <div>
@@ -14,7 +14,7 @@
         <x-link />
       </div>
     </div>
-    <div class="mt-16">
+    <div class="mt-16 md:mt-0 md:col-span-4 md:col-start-9">
       <div>
         @php
           $asset = \Roots\asset('images/img.png');
@@ -24,8 +24,8 @@
     </div>
   </section>
 
-  <section class="mt-[100px] md:grid">
-    <div class="md:col-span-4">
+  <section class="mt-[100px] md:grid md:grid-dense">
+    <div class="md:col-span-4 md:col-start-9">
       <x-title text="Bibendum curabitur magna" />
       <x-subtitle text="Aenean sed nibh a magna posuere" />
       <div>
@@ -48,7 +48,7 @@
         <x-link />
       </div>
     </div>
-    <div class="mt-16 md:mt-0 md:col-span-6">
+    <div class="mt-16 md:mt-0 md:col-span-6 md:col-start-1 md:col-row-1">
       <div class="bg-section2 fade-in">
         @php
           $asset = \Roots\asset('images/img-section2.png');
@@ -95,8 +95,8 @@
     </div>
   </section>
 
-  <section class="mt-[100px]">
-    <div>
+  <section class="mt-[100px] md:grid ">
+    <div class="md:col-span-4">
       <x-title text="Sodales aliquam" />
       <x-subtitle text="Odio mauris diam" />
       <div>
@@ -105,29 +105,37 @@
         </x-section-text>
       </div>
     </div>
-    <div class="mt-8">
+    <div class="mt-8 md:mt-0 md:col-span-6 md:col-start-7">
       <form id="contact-form">
-        <x-input name="firstname" placeholder="Dupond" label="Nom" />
-        <x-input name="lastname" placeholder="" label="Prénom" />
-        <x-input name="email" placeholder="" label="Adresse email" type="email" />
-        <x-input name="phone" placeholder="" label="Téléphone (facultatif)" type="tel" :required="false" placeholder="+33" />
-
-        <div class="relative flex items-center my-4">
-          <label for="subject" class="absolute top-0 h-full text-gray w-[64px] flex items-center left-3">
-            Sujet
-          </label>
-          <select id="subject" name="subject" class="pl-[72px] w-full" required>
-            <option value="" disabled selected>Choisissez un sujet</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-          </select>
+        <div class="md:grid">
+          <x-input name="firstname" placeholder="Dupond" label="Nom" class="md:col-span-6" />
+          <x-input name="lastname" placeholder="" label="Prénom" class="md:col-span-6" />
         </div>
+        <div class="md:grid">
+          <x-input name="email" placeholder="" label="Adresse email" type="email" class="md:col-span-6" />
+          <x-input name="phone" placeholder="" label="Téléphone (facultatif)" type="tel" :required="false"
+                   placeholder="+33" class="md:col-span-6" />
+        </div>
+
+        <div class="md:grid">
+          <div class="col-span-12 md:col-span-6 relative flex items-center my-4">
+            <label for="subject" class="absolute top-0 h-full text-gray w-[64px] flex items-center left-3">
+              Sujet
+            </label>
+            <select id="subject" name="subject" class="pl-[72px] w-full" required>
+              <option value="" disabled selected>Choisissez un sujet</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+            </select>
+          </div>
+        </div>
+
         <div class="relative my-4">
           <label for="message" class="absolute top-2 h-full text-gray w-[64px] left-3 h-[16px]">
             Message
           </label>
-          <textarea name="message" class="pt-[20px] w-full"
+          <textarea name="message" class="pt-[24px] px-3 w-full"
                     id="message" required></textarea>
         </div>
 
@@ -148,6 +156,70 @@
   </section>
 @endsection
 
-@section('sidebar')
-  @include('sections.sidebar')
+@section('scripts')
+  <script>
+    let _csrfToken = null;
+    window.addEventListener('load', () => {
+      _csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+      let _form = document.getElementById('contact-form');
+      if (_form) {
+        _form.addEventListener('submit', submitForm);
+      }
+    });
+
+    async function submitForm(e) {
+      e.preventDefault();
+      // try {
+      //   let _formData = new FormData(e.target);
+        // let _host = window.location.protocol + '//' + window.location.host;
+      //   let _response = await fetch('/api/contact', {
+      //     method: 'POST',
+      //     headers: {
+      //       'Accept': 'application/json',
+      //       'Accept-Type': 'application/json',
+      //       'Content-Type': 'application/json',
+      //       'X-CSRF-TOKEN': _csrfToken,
+      //     },
+      //     body: _formData
+      //   });
+      //
+      //   console.log('_response')
+      //   console.log(_response)
+      //   // let _data = await _response.json();
+      //   let _data = await _response.text();
+      //   console.log('_data')
+      //   console.log(_data)
+      // } catch (err) {
+      //   console.log('err')
+      //   console.log(err)
+      // }
+
+      let _formData = new FormData(e.target);
+      // fetch('/api/contact', {
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Accept-Type': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': _csrfToken,
+        },
+        body: _formData
+      })
+      .then((response) => {
+          console.log('response')
+          console.log(response)
+          return response.json()
+        })
+        .then((data) => {
+          console.log('Success:', data)
+          e.target.reset();
+        })
+        .catch((error) => {
+          console.log('error')
+          console.log(error)
+          // console.error('Error:', error)
+        });
+    }
+  </script>
 @endsection

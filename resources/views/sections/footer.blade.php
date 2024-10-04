@@ -92,7 +92,7 @@
     </div>
 
     <div class="grid">
-      <div class="col-span-12 md:col-start-4-6">
+      <div class="col-span-12 md:col-span-6 !md:col-start-4">
         <div class="opacity-30 py-4">
           <hr class="border-white" />
         </div>
